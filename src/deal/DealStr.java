@@ -13,8 +13,7 @@ public class DealStr {
 		String allstr=res.getString(node);
 		
 		String[] a= allstr.split("#");
-		for (int i =0; i <a.length;i++)
-		  System.out.println(a[i]);
+	
 		return  a;
 	}
 	
@@ -22,7 +21,7 @@ public class DealStr {
 	{
 		 HashMap<String,String[]> mp = new HashMap<String,String[]>();
 		 DealStr a  = new DealStr();
-	 for (int i =0 ; i <3;i++) {
+	 for (int i =1 ; i <8;i++) {
 		 for (int j =0;j <3;j++)
 		 {
 		String	spstr[]= a.splitstr("label"+i+j);
@@ -40,7 +39,7 @@ public class DealStr {
 	 public static void main(String[] args) {
 		 HashMap<String,String[]> mp = new HashMap<String,String[]>();
 		 DealStr a  = new DealStr();
-	 for (int i =0 ; i <3;i++) {
+	 for (int i =1 ; i <8;i++) {
 		 for (int j =0;j <3;j++)
 		 {
 		String	spstr[]= a.splitstr("label"+i+j);
@@ -51,8 +50,7 @@ public class DealStr {
 	 
 	 }
 		 System.out.println(mp);
-		 System.out.println(mp.get("label10")[0]);
-		 System.out.println(mp.get("label10")[1]);
+		
 		
 	 }
 	

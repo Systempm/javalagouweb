@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import deal.DealStr;
+import deal.Lagoujsondeal;
 
 @Controller
 public class AController {
@@ -37,7 +38,7 @@ public class AController {
 		DealStr stt= new DealStr();
 		HashMap hashmap;
 		hashmap= stt .done();
-		System.out.println(hashmap);
+//		System.out.println(hashmap);
 		 model.addAttribute("hs", hashmap);
 		return "tables";
 	}
@@ -57,5 +58,14 @@ public class AController {
 			return mv;
 		}
 	
-	
+		@RequestMapping("/gomain1")
+		public String gomain1(Model model ) throws Exception{
+			Lagoujsondeal stt= new Lagoujsondeal();
+			HashMap hashmap;
+			hashmap= stt .gethslist();
+			System.out.println(hashmap);
+			 model.addAttribute("hs", hashmap);//hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
+			 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
+			return "maintables";
+		}
 }

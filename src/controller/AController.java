@@ -3,6 +3,7 @@ package controller;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import Dao.HDao;
+import Vo.HVo;
 import deal.DealStr;
 import deal.Lagoujsondeal;
 
@@ -33,15 +36,15 @@ public class AController {
 //		return mv;
 //	}
 
-	@RequestMapping("/gomain")
-	public String gomain(Model model ) throws Exception{
-		DealStr stt= new DealStr();
-		HashMap hashmap;
-		hashmap= stt .done();
-//		System.out.println(hashmap);
-		 model.addAttribute("hs", hashmap);
-		return "tables";
-	}
+//	@RequestMapping("/gomain")
+//	public String gomain(Model model ) throws Exception{
+//		DealStr stt= new DealStr();
+//		HashMap hashmap;
+//		hashmap= stt .done();
+////		System.out.println(hashmap);
+//		 model.addAttribute("hs", hashmap);
+//		return "tables";
+//	}
 	
 	@RequestMapping("/chuanzhi")
 	    public String chuanzhi(Model model){
@@ -50,6 +53,7 @@ public class AController {
 	        return "s1";
 	        
 	    }
+	
 		@RequestMapping("/go1p")
 		public ModelAndView go1p() throws Exception{
 			System.out.println("111");
@@ -57,6 +61,16 @@ public class AController {
 			//mv.addObject("a", "name");
 			return mv;
 		}
+	
+	@RequestMapping("/goh")
+	public String goh(Model model ) throws Exception{
+         HDao hd =new HDao();
+   		List <HVo> list= hd.Hselect();
+		 model.addAttribute("list", list);//hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
+//		 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
+		return "h";
+	}
+	
 	
 		@RequestMapping("/gomain1")
 		public String gomain1(Model model ) throws Exception{

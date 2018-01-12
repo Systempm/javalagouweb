@@ -8,11 +8,13 @@
 </head>
 <body>
 欢迎页面
-<a href="gomain">11 111111111111</a>
 
-<a href="go1p">go1p</a>
+
+<a href="go1p">没啥用的跳转</a>
 <img  src = "1.png">
 <img  src = "pi/1.png">
-<a href="gomain1">11 <img  src = "pi/1.png"></a>
+<a href="gomain1">gomain 老版本 思路有问题的界面 <img  src = "pi/1.png"></a>
+<a href="goh">新版本 H界面</a>
+
 </body>
 </html>

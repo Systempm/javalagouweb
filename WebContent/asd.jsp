@@ -5,30 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<style type="text/css">  
-#div1 {
-position:relative;
-}
-#div1-a {
-position:absolute;
-top:70px;
-right:0;
-width:200px;
-}
-</style>
+
+
+<frameset cols="20%,80%" noresize="noresize" id= "mainframe";>
+  <frame src="s.jsp" onmouseover="javascript:window.document.getElementById('mainframe').setAttribute('flag','true');" />
+  <frame src="s.jsp" onmouseover="javascript:window.document.getElementById('mainframe').setAttribute('flag','true');" />
+
+</frameset>
+
+
 </head>
 
 <body>
-<div id="div1" style="width: 500px;height: 300px ;background: black;float:left">
-   <div id="div1-a" style="color: white;">
-    this is div-1a element.
-    </div>
 
-</div>
-<div style="width: 500px;height: 300px ;background: black ;float:left; position:relative" >
-   <div id="div1-b" style="color: white; position:absolute;top:50px;background: green ;width: 70px ;height: 70px">
-    this is div-1a element.
-    </div>
-</div>
+
 </body>
 </html>

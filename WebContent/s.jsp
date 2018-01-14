@@ -5,6 +5,8 @@
     pageEncoding="Utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+
 <%  
 
         //String filePath = request.getSession().getServletContext().getRealPath("/")+"JSP_Ajax"+"\\";  
@@ -26,7 +28,18 @@
         //System.out.println(strB);
     %>  
     
-  
+  <script language="javascript">
+    function ff1()
+    {
+        var flag =  parent.document.getElementById('mainframe').getAttribute('flag');
+        if(flag == 'true')
+            window.frameElement.parentNode.setAttribute('this',document.body.scrollTop);
+        else
+            scrollTo(0,window.frameElement.parentNode.getAttribute('this'));
+        setTimeout("ff1()",1);
+    }
+    ff1();
+</script>
     <script type="text/javascript">
     var a= '<%=a%>';
     var b=6;

@@ -14,7 +14,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 public class Lagoujsondeal {
-
+//old
 	public HashMap gethslist() {
 		JsonParser parse = new JsonParser();
 		HashMap has= new HashMap();

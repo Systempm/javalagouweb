@@ -16,19 +16,28 @@ if (request.getAttribute("list")!=null){
 	}
 %>
 
-<div style="background: green;height: 700px;width: 70px ;float: left; margin-right:1px; position:relative">
-                                                     <!-- 调高度 -->
-<div align="center" style="background: white;height: 40px;width: 70px ; margin-bottom:1px"></div>
-<% for (int j = 0 ;j<20;j++){%>
-                                                     <!-- 调高度 -->
-<div align="center" style="background: white;height: 40px;width: 70px ; margin-bottom:1px">
-   <%=j*1%>K -<%=(j+1)*1%>K
-</div> 
 
-<%}%>
-</div>
 
 <%for (int  i  = 0;i <ll.size();i ++){ %>
+
+
+<%if(i%10==0){%>
+
+	<div style="background: green;height: 700px;width: 70px ;float: left; margin-right:1px; position:relative" >
+	<div align="center" style="background: white;height: 40px;width: 70px ; margin-bottom:1px"></div>
+	<% for (int j = 0 ;j<20;j++){%>
+	<div align="center" style="background: white;height: 40px;width: 70px ; margin-bottom:1px">
+	   <%=j*1%>K -<%=(j+1)*1%>K
+	</div> 
+
+<%}%>
+	</div>
+		
+<% } %>
+
+
+
+
                                                            <!--宽度 调高度 -->
 <div id="<%= i%>" style="background: white;height: 700px;width: 70px ; float:left; margin-right:1px;position:relative">
                                                    <!-- logo调高度 -->
@@ -37,7 +46,7 @@ if (request.getAttribute("list")!=null){
 </div>
                                                                                         
                                                                            <!-- 调高度 -->                                                                              <!-- 调高度 -->
-<div id="div1-b" style="color: yellow; position:absolute;top:<%=ll.get(i).getMinslary()*30%>px;background: green ;width: 70px ;height: <%=ll.get(i).getMaxjianminslary()*30%>px">
+<div id="div1-b" style="color: yellow; position:absolute;top:<%=ll.get(i).getMinslary()*41%>px;background: green ;width: 70px ;height: <%=ll.get(i).getMaxjianminslary()*41%>px">
 
 a1</div> 
 </div>

@@ -68,7 +68,15 @@ public class AController {
    		List <HVo> list= hd.Hselect();
 		 model.addAttribute("list", list);//hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
 //		 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
-		return "h";
+		return "hold";
+	}
+	@RequestMapping("/gohnew")
+	public String gohnew(Model model ) throws Exception{
+         HDao hd =new HDao();
+   		List <HVo> list= hd.Hselect();
+		 model.addAttribute("list", list);//hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
+//		 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
+		return "hlistnew";
 	}
 	
 	

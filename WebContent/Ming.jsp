@@ -14,7 +14,7 @@
 <img  src = "1.png">
 <img  src = "pi/1.png">
 <a href="gomain1">gomain 老版本 思路有问题的界面 <img  src = "pi/1.png"></a>
-<a href="goh">新版本 H界面</a>
-
+<a href="goh">新版本 H老界面</a>
+<a href="gohnew">新版本 H新界面</a>
 </body>
 </html>

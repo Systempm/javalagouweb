@@ -8,12 +8,12 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import Dao.HDao;
+import Dao.HnewDao;
 import Vo.HVo;
-import deal.DealStr;
+import Vo.newHvo;
 import deal.Lagoujsondeal;
 
 @Controller
@@ -72,8 +72,8 @@ public class AController {
 	}
 	@RequestMapping("/gohnew")
 	public String gohnew(Model model ) throws Exception{
-         HDao hd =new HDao();
-   		List <HVo> list= hd.Hselect();
+         HnewDao hd =new HnewDao();
+   		List <newHvo> list= hd.Hselect("…œ∫£");
 		 model.addAttribute("list", list);//hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
 //		 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
 		return "hlistnew";

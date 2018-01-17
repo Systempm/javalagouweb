@@ -1,38 +1,44 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import Vo.HVo;
+
+import Vo.newHvo;
 public class HnewDao extends DbConnection{
-	public List Hselect(){
+	public List Hselect(String city){
 	List list=new ArrayList();
 	
 	 Connection con=this.getconnection();
-	 Statement st =null;
-	 ResultSet rs=null;
+	PreparedStatement ps =null;
+	  ResultSet rs=null;
 	 try {
-		st=con.createStatement();
-		rs=st.executeQuery("select * from lagou");
+		ps=con.prepareStatement("select * from lagou where city =?");
+		ps.setString(1, city);
+		rs=ps.executeQuery();
 		while(rs.next()){	
-			HVo hvo=new HVo();
-			hvo.setId(rs.getString(1));
-			hvo.setGongsi(rs.getString(2));
-			hvo.setZhiwei(rs.getString(3));
-			hvo.setGongzi(rs.getString(4));
-			hvo.setMinslary(rs.getInt(5));
-			hvo.setMaxslary(rs.getInt(6));
-			hvo.setMaxjianminslary(rs.getInt(6)-rs.getInt(5)		);
-			hvo.setDidian(rs.getString(7));
-			hvo.setTedian(rs.getString(8));
-			hvo.setLogo(rs.getString(9));
-			hvo.setGongsijieshao(rs.getString(10));
-			hvo.setXiangxiwangzhi(rs.getString(11));
-			hvo.setRukushijian(rs.getDate(12));
+			newHvo hvo=new newHvo();
+			hvo.setCompanshortname(rs.getString(1));
+			hvo.setCompanyFullName(rs.getString(2));
+			hvo.setPositionName(rs.getString(3));
+			hvo.setPositionId(rs.getString(4));
+			hvo.setPositionAdvantage(rs.getString(5));
+			hvo.setSalary(rs.getString(6));
+			hvo.setMinsalary(rs.getInt(7));
+			hvo.setMaxsalary(rs.getInt(8));
+			hvo.setMaxjianminslary(rs.getInt(8)-rs.getInt(7)		);
+			hvo.setWorkYear(rs.getString(9));
+			hvo.setEducation(rs.getString(10));
+			hvo.setCity(rs.getString(11));
+			hvo.setDistrict(rs.getString(12));
+			hvo.setCompanySize(rs.getString(13));
+			hvo.setCompanyLogo("//"+rs.getString(14));
+			hvo.setCompanyLabelList(rs.getString(15));
 			
+			hvo.setCreateTime(rs.getDate(16));
 			list.add(hvo);
 			
 //		System.out.println("ID£∫"+rs.getString(1));
@@ -54,20 +60,20 @@ public class HnewDao extends DbConnection{
 			e.printStackTrace();
 		}finally{
 			this.closeResultSet(rs);
-			this.closeStatement(st);
+			this.closeStatement(ps);
 			this.closeConnection(con);
 		}
 		 return list;
 	}
 	public static void main(String[] args) {
-		HDao hd =new HDao();
+		HnewDao hd =new HnewDao();
 //		HVo hv = new HVo();
-		List<HVo> list = hd .Hselect() ;  
-//		for  (HVo hvo:list )
-//		{
-//	   System.out.println(hvo.getId());
-//		}
+		List<newHvo> list = hd .Hselect("…œ∫£") ;  
+		for  (newHvo hvo:list )
+		{
+	   System.out.println(hvo.getCompanyLogo());
+		}
 		
-		System.out.println( list.get(1).getMaxjianminslary());
+//		System.out.println( list.get(1).getCompanshortname());
 		}
 }

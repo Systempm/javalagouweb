@@ -33,7 +33,7 @@
 <div id="<%= i%>" style="background: white;height: 700px;width: 70px ; float:left; margin-right:1px;position:relative">
 
 <div id ="logo<%= i%>" style="width: 70px; height: 40px " >
-<img src="//www.lgstatic.com/thumbnail_120x120/image1/M00/00/2D/Cgo8PFTUXHmAQ6K2AAA-xp7F-7c908.jpg"  width="100%" height="100%">
+<img src="www.lgstatic.com/thumbnail_120x120/image1/M00/00/2D/Cgo8PFTUXHmAQ6K2AAA-xp7F-7c908.jpg"  width="100%" height="100%">
 </div>
 
 

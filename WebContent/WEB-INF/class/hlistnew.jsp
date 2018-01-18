@@ -12,11 +12,13 @@ int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 %>
   <script type="text/javascript">
   function init(){
+	  //向右移动的div
  var clientWidth= document.body.clientWidth - 40 +"px"
+ var topwidth = document.body.clientWidth +"px"
  console.log("width ",clientWidth)
-
+//上面的div
 	 document.getElementById("nextdivv").style.left=clientWidth;
- 
+ document.getElementById("topsearch").style.width=topwidth;
  }
   function goright(){
 	  t = document.body.scrollTop;
@@ -24,7 +26,7 @@ int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	
 	  window.scrollTo(l+120,t);
 	  
-	  
+	  //左右移动
   }
   function goleft(){
 	  t = document.body.scrollTop;
@@ -33,6 +35,23 @@ int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	  window.scrollTo(l-120,t);
 	  
 	  
+  }
+  
+  function topdisplay(){
+	
+		if ( document.getElementById("topsearch").style.display=="inline")
+			{
+	  document.getElementById("topsearch").style.width="50px";
+	  document.getElementById("topinside").style.display="none";
+	  document.getElementById("yincangsrc").style.display="inline";
+			}
+		else if  ( document.getElementById("topsearch").style.display=="none")
+		{
+  document.getElementById("topsearch").style.width="1000px";
+  document.getElementById("topinside").style.display="inline";
+  document.getElementById("yincangsrc").style.display="none";
+		}
+		
   }
   
  </script>
@@ -45,7 +64,7 @@ int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 
 <body onload="init()" style=" overFlow-x:hidden;overFlow-y:scroll;height: 837px">
 
-<div id="body1" style="height:837px;width:<%=screenWidth*2%>px;background: black "  >
+<div id="body1" style="height:837px;width:<%=screenWidth*2%>px;background: black "   >
 
 <% List<newHvo> ll=null;
 int size;
@@ -113,7 +132,18 @@ else {
 <%} %>
 </div>
 
-<div id="nextdivv" style="position: fixed;width: 50px;height: 50px;left:0px; top:300px;background: pink " z-index =100 onclick="goright()">right</div>
-<div id="nextdivv" style="position: fixed;width: 50px;height: 50px;left:10px; top:300px;background: pink " z-index =100 onclick="goleft()">left</div>
+<div id="nextdivv" style="position: fixed;width: 35px;height: 70px;left:0px; top:300px " z-index =100 onclick="goright()"><img src="pi/you.png"style="width: 100%;height: 100%  "  ></div>
+<div id="nextdivv" style="position: fixed;width: 35px;height: 70px;left:10px; top:300px" z-index =100 onclick="goleft()"><img src="pi/you.png"style="width: 100%;height: 100% ;transform:rotate(180deg)"></div>
+<div id="topsearch" style="display:inline; position: fixed;width: 1000px;height: 100px;left:0px; top:0px;background:rgba(255,255,255,0.6) " z-index =110  ">
+
+        <div id="topinside" style="display:inline; ;width: 100%;height: 100% " z-index =110  ">
+        <input type="text" id="sreach" > 
+        <a href=""><input type="button" value="搜索"></a>
+
+        <input type="button" value="隐藏" id="topdisplay" onclick="topdisplay()">
+        
+         </div>
+      <img src="pi/5.png" style="display: inline" id="yincangsrc"  >
+</div>
 </body>
 </html>

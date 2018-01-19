@@ -5,13 +5,18 @@ package controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import Bean.PageBean;
 import Dao.HDao;
 import Dao.HnewDao;
+import Service.PageService;
 import Vo.HVo;
 import Vo.newHvo;
 import deal.Lagoujsondeal;
@@ -71,10 +76,41 @@ public class AController {
 		return "hold";
 	}
 	@RequestMapping("/gohnew")
-	public String gohnew(Model model ) throws Exception{
-         HnewDao hd =new HnewDao();
-   		List <newHvo> list= hd.Hselect("上海");
-		 model.addAttribute("list", list);//hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
+	public String gohnew(Model model,HttpServletRequest request ) throws Exception{
+		//解析点的是第几页
+		int page=1;
+		if (request.getParameter("page")=="null")
+		{
+			//如果参数多 就需要考虑传值 Map 类型了 
+			  HnewDao hd =new HnewDao();
+			  PageService pg = new PageService();
+			PageBean pb=  pg .Page(page, 30);
+				 model.addAttribute("pageBean", pb);
+		}
+		else {
+			 HnewDao hd =new HnewDao();
+			 if (request.getParameter("page")==null)
+			 {
+					System.out.print("page=");
+					System.out.println(1);
+					PageService pg = new PageService();
+					PageBean pb=  pg .Page(1, 30);
+					System.out.println(pb);
+					System.out.println(pb.getList().get(1).getCompanyFullName());
+						 model.addAttribute("pageBean", pb);
+					
+			 }
+			 else {
+			String s=request.getParameter("page");
+			page=Integer.parseInt(s);
+			System.out.print("page=");
+			System.out.println(page);
+			PageService pg = new PageService();
+			PageBean pb=  pg .Page(page, 30);
+				 model.addAttribute("pageBean", pb);
+			 }
+		}
+       //hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
 //		 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
 		return "hlistnew";
 	}

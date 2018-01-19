@@ -1,4 +1,4 @@
-
+<%@page import="Bean.PageBean"%>
 <%@page import="Vo.newHvo"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -38,18 +38,26 @@ int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
   }
   
   function topdisplay(){
-	
-		if ( document.getElementById("topsearch").style.display=="inline")
+	  var topwidth = document.body.clientWidth +"px"
+		if ( document.getElementById("topinside").style.display=="inline")
 			{
 	  document.getElementById("topsearch").style.width="50px";
+	  document.getElementById("topsearch").style.background="none";
 	  document.getElementById("topinside").style.display="none";
 	  document.getElementById("yincangsrc").style.display="inline";
+	  document.getElementById("yincangsrc").style.transform="rotate(0deg)";
+	  document.getElementById("topsearch").style.left="15px";
+	  document.getElementById("topsearch").style.top="15px";
+
 			}
-		else if  ( document.getElementById("topsearch").style.display=="none")
+		else if  ( document.getElementById("topinside").style.display=="none")
 		{
-  document.getElementById("topsearch").style.width="1000px";
+			 document.getElementById("topsearch").style.background="rgba(255,255,255,0.6)";
+  document.getElementById("topsearch").style.width=topwidth;
   document.getElementById("topinside").style.display="inline";
-  document.getElementById("yincangsrc").style.display="none";
+  document.getElementById("yincangsrc").style.transform="rotate(180deg)";
+  document.getElementById("topsearch").style.left="0px";
+  document.getElementById("topsearch").style.top="0px";
 		}
 		
   }
@@ -62,21 +70,24 @@ int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 </head>
 
 
-<body onload="init()" style=" overFlow-x:hidden;overFlow-y:scroll;height: 837px">
+<body onload="init()" style=" overFlow-x:hidden;overFlow-y:scroll;height: 837px  ">
 
-<div id="body1" style="height:837px;width:<%=screenWidth*2%>px;background: black "   >
+<div id="body1" style="height:837px;width:2732px;background: black ;padding-left:50px "   >
 
 <% List<newHvo> ll=null;
-int size;
-if (request.getAttribute("list")!=null){
-	 ll = (List<newHvo>)request.getAttribute("list");
+int size=0;
+if (request.getAttribute("pageBean")!=null){
+	PageBean pb = (PageBean)request.getAttribute("pageBean");
+	ll=pb.getList();
+	if (ll.size()>=30){
+		 size = 30;
 	}
-if (ll.size()>=30){
-	 size = 30;
+	else {
+		size=ll.size();
+	}
+
 }
-else {
-	size=ll.size();
-}
+
 
 %>
 
@@ -130,20 +141,20 @@ else {
 <%=ll.get(i).getSalary() %><br><%=ll.get(i).getWorkYear()%><br><%=ll.get(i).getEducation()%>   </div> 
 </div>
 <%} %>
+<!--  跳转 a href 分页 -->
+<div id="nextpage" style="background: white;height: 837px;width:40px ; float:right; margin-right:1px"> 下一页 </div>
 </div>
 
 <div id="nextdivv" style="position: fixed;width: 35px;height: 70px;left:0px; top:300px " z-index =100 onclick="goright()"><img src="pi/you.png"style="width: 100%;height: 100%  "  ></div>
 <div id="nextdivv" style="position: fixed;width: 35px;height: 70px;left:10px; top:300px" z-index =100 onclick="goleft()"><img src="pi/you.png"style="width: 100%;height: 100% ;transform:rotate(180deg)"></div>
-<div id="topsearch" style="display:inline; position: fixed;width: 1000px;height: 100px;left:0px; top:0px;background:rgba(255,255,255,0.6) " z-index =110  ">
+
+<div id="topsearch" style="display:inline; position: fixed;width: 1000px;height: 100px;left:0px; top:0px;background:rgba(255,255,255,0.6) "  >
 
         <div id="topinside" style="display:inline; ;width: 100%;height: 100% " z-index =110  ">
         <input type="text" id="sreach" > 
         <a href=""><input type="button" value="搜索"></a>
-
-        <input type="button" value="隐藏" id="topdisplay" onclick="topdisplay()">
-        
          </div>
-      <img src="pi/5.png" style="display: inline" id="yincangsrc"  >
+    <a onclick="topdisplay()">  <img src="pi/you.png" style="display: inline; width: 30px ;height:  60px ;transform:rotate(180deg)" id="yincangsrc"  ></a>
 </div>
 </body>
 </html>

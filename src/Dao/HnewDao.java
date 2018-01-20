@@ -82,20 +82,23 @@ public class HnewDao extends DbConnection{
 	        return pageCount;
 	    }
 	
-	  public ArrayList<newHvo> SelectAll(int pageSize, int  startIndex) throws Exception{
+	  public ArrayList<newHvo> SelectAll(int pageSize, int  startIndex){
 	        //定义一个当前要获取的类的类型的数组；
 		  Connection con=this.getconnection();
 		  PreparedStatement ps =null;
 		  ResultSet rs=null;
 	        ArrayList<newHvo> list=new ArrayList<newHvo>();
 	        //mysql的分页语句；
-	        
+	     
 	        String sql="select * from lagou order by createTime DESC limit ?,?";
-	        ps=con.prepareStatement(sql);
-	        ps.setInt(1, (startIndex-1)*pageSize);
+	        try {
+				ps=con.prepareStatement(sql);
+				System.out.println(startIndex);
+				System.out.println(pageSize);
+	        ps.setInt(1, pageSize);
 	        ps.setInt(2, startIndex);
 	        rs=ps.executeQuery();
-	    
+	 
 	        //如果rs.next是true，首先把要赋值的类实例化，那么通过while循环将每个字段元素赋值到相应的类的变量中，
 	        while(rs.next()){
 	        	newHvo hvo=new newHvo();
@@ -116,9 +119,22 @@ public class HnewDao extends DbConnection{
 				hvo.setCompanyLogo("//"+rs.getString(14));
 				hvo.setCompanyLabelList(rs.getString(15));
 				hvo.setCreateTime(rs.getDate(16));
+			
 				list.add(hvo);
 	        }
+	        } catch (SQLException e) {
+	        	// TODO Auto-generated catch block
+	        	System.out.println("pageDao yichang");
+	        	e.printStackTrace();
+	        }
+	        finally{
+				this.closeResultSet(rs);
+				this.closeStatement(ps);
+				this.closeConnection(con);
+			}
 	        //最后返回出去
+	        
+	
 	        return list;
 	    }
 	

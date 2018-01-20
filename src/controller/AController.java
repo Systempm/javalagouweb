@@ -107,6 +107,8 @@ public class AController {
 			System.out.println(page);
 			PageService pg = new PageService();
 			PageBean pb=  pg .Page(page, 30);
+			
+			System.out.println(pb.getList().get(3).getCompanshortname());
 				 model.addAttribute("pageBean", pb);
 			 }
 		}

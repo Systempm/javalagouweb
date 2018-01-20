@@ -21,18 +21,44 @@ int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
  document.getElementById("topsearch").style.width=topwidth;
  }
   function goright(){
-	  t = document.body.scrollTop;
-	  l = document.body.scrollLeft;
-	
-	  window.scrollTo(l+120,t);
+	  if (typeof window.pageYOffset != 'undefined') {
+          t = window.pageYOffset;
+          l=window.pageXOffset;
+          window.scrollTo(l+120,t);
+                    }
+	  else  if (document.documentElement && document.documentElement.scrollTop) {
+	        t = document.documentElement.scrollTop;
+	        l = document.documentElement.scrollLeft;
+	        window.scrollTo(l+120,t);
+	    } else if (document.body) {
+	    	 t = document.body.scrollTop;
+	   	  l = document.body.scrollLeft;
+	   	
+	   	  window.scrollTo(l+120,t);
+	    }
+	  
+	  console.log(l)
+	  	  console.log(t)
 	  
 	  //左右移动
   }
   function goleft(){
-	  t = document.body.scrollTop;
-	  l = document.body.scrollLeft;
-	
-	  window.scrollTo(l-120,t);
+	  if (typeof window.pageYOffset != 'undefined') {
+          t = window.pageYOffset;
+          l=window.pageXOffset;
+          window.scrollTo(l-120,t);
+                    }
+	  else	  if (document.documentElement && document.documentElement.scrollTop) {
+	        t = document.documentElement.scrollTop;
+	        l = document.documentElement.scrollLeft;
+	        window.scrollTo(l-120,t);
+	    } else if (document.body) {
+	    	 t = document.body.scrollTop;
+	   	  l = document.body.scrollLeft;
+	   	
+	   	 window.scrollTo(l-120,t);
+	    }
+	  
 	  
 	  
   }
@@ -72,12 +98,15 @@ int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 
 <body onload="init()" style=" overFlow-x:hidden;overFlow-y:scroll;height: 837px  ">
 
-<div id="body1" style="height:837px;width:2732px;background: black ;padding-left:50px "   >
+<div id="body1" style="height:867px;width:2732px;background: black ;padding-left:50px "   >
 
 <% List<newHvo> ll=null;
 int size=0;
+PageBean pb=null;
 if (request.getAttribute("pageBean")!=null){
-	PageBean pb = (PageBean)request.getAttribute("pageBean");
+
+	pb = (PageBean)request.getAttribute("pageBean");
+	System.out.println("pb now page:"+pb.getPageNum());
 	ll=pb.getList();
 	if (ll.size()>=30){
 		 size = 30;
@@ -130,10 +159,10 @@ if (request.getAttribute("pageBean")!=null){
                                          int  height=ll.get(i).getMaxjianminslary()*31;
                                           if(top + height>837)
                                         	  {
-                                        	  if (top >837)
-                                        	  { top = 820;height=17;  }
+                                        	  if (top >=837)
+                                        	  { top = 837;height=50;  }
                                         	  else{
-                                        		  height=837-top;
+                                        		  height=837-top+30;
                                         	  }
                                         	  }%>                                 <!-- 调高度 -->                                                                              <!-- 调高度 -->
 <div id="div1-b" style="color: yellow; position:absolute;top:<%=top%>px;background: green ;width: 100% ;height: <%=height%>px">
@@ -142,7 +171,12 @@ if (request.getAttribute("pageBean")!=null){
 </div>
 <%} %>
 <!--  跳转 a href 分页 -->
-<div id="nextpage" style="background: white;height: 837px;width:40px ; float:right; margin-right:1px"> 下一页 </div>
+      <div id="nextpage" style="background: white;height: 837px;width:40px ; float:right; margin-right:1px"> 
+<a href="gohnew?page=<%= pb.getPageNum()+1%>">下一页 </a>             
+     </div>
+
+
+
 </div>
 
 <div id="nextdivv" style="position: fixed;width: 35px;height: 70px;left:0px; top:300px " z-index =100 onclick="goright()"><img src="pi/you.png"style="width: 100%;height: 100%  "  ></div>
@@ -151,10 +185,12 @@ if (request.getAttribute("pageBean")!=null){
 <div id="topsearch" style="display:inline; position: fixed;width: 1000px;height: 100px;left:0px; top:0px;background:rgba(255,255,255,0.6) "  >
 
         <div id="topinside" style="display:inline; ;width: 100%;height: 100% " z-index =110  ">
+        <p style=" float:left">目前仅支持一下城市<br> 北京 上海 深圳 杭州 大连 沈阳</p>
+  
         <input type="text" id="sreach" > 
-        <a href=""><input type="button" value="搜索"></a>
+        <a  href="" ><input type="button" value="搜索"></a>
          </div>
-    <a onclick="topdisplay()">  <img src="pi/you.png" style="display: inline; width: 30px ;height:  60px ;transform:rotate(180deg)" id="yincangsrc"  ></a>
+    <a onclick="topdisplay()"  >  <img src="pi/you.png" style="display: inline; width: 30px ;height:  60px ;transform:rotate(180deg)" id="yincangsrc"  ></a>
 </div>
 </body>
 </html>

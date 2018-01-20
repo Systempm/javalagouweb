@@ -17,12 +17,16 @@ public class PageService {
 			totalRecord = hd.getPage(pageSize);
 	 		 pb = new PageBean (pageNum , pageSize ,totalRecord);
 			int startIndex = pb .getStartIndex();
+			System.out.println("start index");
+			System.out.println(startIndex);
 			pb .setList(hd .SelectAll(startIndex,pageSize));
-	
-   
+	//??
+			
+
 		}
 		
 		 catch (Exception e) {
+			 System.out.println("pageservice yichang");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

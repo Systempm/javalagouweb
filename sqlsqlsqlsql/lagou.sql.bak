@@ -24,7 +24,7 @@ CREATE TABLE `coffee` (
   `name` varchar(255) NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyIASM AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of coffee
@@ -161,7 +161,7 @@ CREATE TABLE `lagou201801072237` (
   `gongsijieshao` varchar(255) DEFAULT NULL,
   `xiangxiwangzhi` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyIASM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of lagou201801072237
@@ -198,7 +198,7 @@ CREATE TABLE `lagou201801091217` (
   `xiangxiwangzhi` varchar(255) DEFAULT NULL,
   `rukushijian` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyIASM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of lagou201801091217
@@ -271,7 +271,7 @@ CREATE TABLE `lagoushanghai` (
   `companyLabelList` varchar(70) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
   `firstType` varchar(70) DEFAULT NULL
-) ENGINE=MyIASM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of lagoushanghai
@@ -743,7 +743,7 @@ CREATE TABLE `lala` (
   `xiangxiwangzhi` varchar(255) DEFAULT NULL,
   `rukushijian` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyIASM AUTO_INCREMENT=166 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of lala

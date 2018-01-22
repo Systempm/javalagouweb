@@ -4,12 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>-Attempt-life</title>
+ <style>
+body{
+  font-family: "华文细黑";
+  width: 100%;
+  height:auto;
+  background:url("pi/main.png") no-repeat;
+  background-size: 100%;
+}
+html { overflow: hidden; }
+</style>
 </head>
-<body>
-欢迎页面
+
+<body ">
 
 
+<div style="position:absolute ;top: 500px ">
 <a href="go1p">没啥用的跳转</a>
 
 <img  src = "pi/1.png">
@@ -18,5 +29,6 @@
 <a href="gohnew">新版本 H新界面</a>
 
 <a href="gohnew"><div style="width: 50px;height: 50px"><img src="pi/you.png"style="width: 100%;height: 100%"></div></a>
+</div>>
 </body>
 </html>

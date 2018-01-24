@@ -5,11 +5,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<% 
 
-int screenWidth=java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-
-%>
   <script type="text/javascript">
   function init(){
 	  //向右移动的div
@@ -185,7 +181,7 @@ if (request.getAttribute("pageBean")!=null){
 <div id="topsearch" style="display:inline; position: fixed;width: 1000px;height: 100px;left:0px; top:0px;background:rgba(255,255,255,0.6) "  >
 
         <div id="topinside" style="display:inline; ;width: 100%;height: 100% " z-index =110  ">
-        <p style=" float:left">目前仅支持一下城市<br> 北京 上海 深圳 杭州 大连 沈阳</p>
+        <p style=" float:left">目前仅支持一下城市<br><a href="selectcity?city=上海">北京</a>  <a href="selectcity?city=上海">上海</a> <a href="selectcity?city=上海">深圳</a> <a href="selectcity?city=上海">杭州</a> <a href="selectcity?city=上海">大连</a>  <a href="selectcity?city=上海">沈阳</a>      </p>
   
         <input type="text" id="sreach" > 
         <a  href="" ><input type="button" value="搜索"></a>

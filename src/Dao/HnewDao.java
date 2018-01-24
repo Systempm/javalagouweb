@@ -72,7 +72,7 @@ public class HnewDao extends DbConnection{
 		  PreparedStatement ps =null;
 		  ResultSet rs=null;
 	        //用coun(*)获取当前表的条数，注意返回的只有一行数据，并且是整数；
-	        String sql="select count(*) from Lagou";
+	        String sql="select count(*) from lagou";
 	        ps=con.prepareStatement(sql);
 	        rs=ps.executeQuery();
 	        //那么rs.next()必然会指向下一个

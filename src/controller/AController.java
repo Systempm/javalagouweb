@@ -91,32 +91,24 @@ public class AController {
 			 HnewDao hd =new HnewDao();
 			 if (request.getParameter("page")==null)
 			 {
-					System.out.print("page=");
-					System.out.println(1);
 					PageService pg = new PageService();
 					PageBean pb=  pg .Page(1, 30);
-					System.out.println(pb);
-					System.out.println(pb.getList().get(1).getCompanyFullName());
 						 model.addAttribute("pageBean", pb);
 					
 			 }
 			 else {
 			String s=request.getParameter("page");
 			page=Integer.parseInt(s);
-			System.out.print("page=");
-			System.out.println(page);
+		
 			PageService pg = new PageService();
 			PageBean pb=  pg .Page(page, 30);
-			
-			System.out.println(pb.getList().get(3).getCompanshortname());
 				 model.addAttribute("pageBean", pb);
 			 }
 		}
-       //hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
-//		 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
+
 		return "hlistnew";
 	}
-	
+
 	
 		@RequestMapping("/gomain1")
 		public String gomain1(Model model ) throws Exception{

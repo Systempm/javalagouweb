@@ -15,7 +15,7 @@
 	">
    
 	<context:component-scan base-package="controller" ></context:component-scan> 
-	 
+	 <context:component-scan base-package="com.attempt.select.controller" />
 	
 	
 	<bean id="irViewResolver"

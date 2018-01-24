@@ -29,6 +29,6 @@ html { overflow: hidden; }
 <a href="gohnew">新版本 H新界面</a>
 
 <a href="gohnew"><div style="width: 50px;height: 50px"><img src="pi/you.png"style="width: 100%;height: 100%"></div></a>
-</div>>
+</div>
 </body>
 </html>

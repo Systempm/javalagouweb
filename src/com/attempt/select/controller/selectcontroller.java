@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.attempt.select.dao.SelectDao;
 import com.attempt.select.dao.SelectDaoImpl;
+import com.attempt.select.vo.PageVo;
 import com.attempt.select.vo.SelectVo;
 
 import Bean.PageBean;
@@ -91,7 +92,7 @@ public class selectcontroller {
 			String position = svo.getPosition();
 			sql = sql + "and  position="+ position; 
 		}
-		
+		System.out.println("city sql 为" +sql );
 		// 拿 sql 去分页 ；
 		//下面 是  放到 分页 里面 ！
 		
@@ -108,7 +109,7 @@ public class selectcontroller {
 			//如果参数多 就需要考虑传值 Map 类型了 
 			 SelectDaoImpl sDao = new SelectDaoImpl();
 			  PageService pg = new PageService();
-			PageBean pb=  pg .SelectPage(sql, page, 30);
+			PageVo pb=  pg .SelectPage(sql, page, 30);
 				 model.addAttribute("pageBean", pb);
 		}
 		else {
@@ -118,7 +119,7 @@ public class selectcontroller {
 					System.out.print("page=");
 					System.out.println(1);
 					PageService pg = new PageService();
-					PageBean pb=  pg .SelectPage(sql,1, 30);
+					PageVo pb=  pg .SelectPage(sql,1, 30);
 					System.out.println(pb);
 					System.out.println(pb.getList().get(1).getCompanyFullName());
 						 model.addAttribute("pageBean", pb);
@@ -143,7 +144,7 @@ public class selectcontroller {
 		
 		//hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
 //		 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
-		return "s1";
+		return "selectlist";
 	}
 	
 	@RequestMapping("/selectposition")
@@ -181,6 +182,6 @@ public class selectcontroller {
 		
        //hasmaplist {columnnum=1, label13=1, label12=2, label11=3}
 //		 model.addAttribute("json", stt.getjson());//json wenjian """"str"""""
-		return "s1";
+		return "selectlist";
 	}
 }

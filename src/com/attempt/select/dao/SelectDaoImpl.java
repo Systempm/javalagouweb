@@ -22,8 +22,8 @@ public class SelectDaoImpl extends DbConnection implements SelectDao{
 		  PreparedStatement ps =null;
 		  ResultSet rs=null;
 	        //用coun(*)获取当前表的条数，注意返回的只有一行数据，并且是整数；
-	     
-	        ps=con.prepareStatement(sql);
+String 	sqld = "select count(*) from ("+sql +")aa";
+	        ps=con.prepareStatement(sqld);
 	        rs=ps.executeQuery();
 	        //那么rs.next()必然会指向下一个
 	        rs.next();
@@ -85,9 +85,10 @@ public class SelectDaoImpl extends DbConnection implements SelectDao{
         ArrayList<newHvo> list=new ArrayList<newHvo>();
         //mysql的分页语句；
      
-       
+        String sqld=sql +" order by createTime DESC limit ?,?";
+ System.out.println(sqld);
         try {
-			ps=con.prepareStatement(sql);
+			ps=con.prepareStatement(sqld);
 			System.out.println(startIndex);
 			System.out.println(pageSize);
         ps.setInt(1, pageSize);

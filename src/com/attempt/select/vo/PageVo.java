@@ -1,10 +1,17 @@
 package com.attempt.select.vo;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import Vo.newHvo;
+import com.attempt.vo.newHvo;
 
-public class PageBean {
+
+
+
+
+
+
+public class PageVo {
 
 	
 	private int pageNum;
@@ -16,7 +23,7 @@ public class PageBean {
 	private int start;
 	private int end;
 	
-	public PageBean(int pageNum,int pageSize,int totalRecord)
+	public PageVo(int pageNum,int pageSize,int totalRecord)
 	{
 		this.pageNum=pageNum;
 		this.pageSize=pageSize;

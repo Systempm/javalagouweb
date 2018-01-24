@@ -1,3 +1,4 @@
+<%@page import="com.attempt.select.vo.PageVo"%>
 <%@page import="Bean.PageBean"%>
 <%@page import="Vo.newHvo"%>
 <%@page import="java.util.*"%>
@@ -96,12 +97,12 @@
 
 <div id="body1" style="height:867px;width:2732px;background: black ;padding-left:50px "   >
 
-<% List<Vo.newHvo> ll=null;
+<% List<com.attempt.vo.newHvo> ll=null;
 int size=0;
-PageBean pb=null;
+PageVo pb=null;
 if (request.getAttribute("pageBean")!=null){
 
-	pb = (PageBean)request.getAttribute("pageBean");
+	pb = (PageVo)request.getAttribute("pageBean");
 	System.out.println("pb now page:"+pb.getPageNum());
 	ll=pb.getList();
 	if (ll.size()>=30){

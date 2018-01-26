@@ -10,7 +10,6 @@ import com.attempt.vo.newHvo;
 
 public interface SelectDao {
 	List<newHvo> selectCity(String city);
-	
 	List<newHvo> selectPosition(String position);
 	List<newHvo> selectSalary(String salary);
 

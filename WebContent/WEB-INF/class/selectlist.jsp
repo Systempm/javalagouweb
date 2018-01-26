@@ -169,7 +169,7 @@ if (request.getAttribute("pageBean")!=null){
 <%} %>
 <!--  跳转 a href 分页 -->
       <div id="nextpage" style="background: white;height: 837px;width:40px ; float:right; margin-right:1px"> 
-<a href="gohnew?page=<%= pb.getPageNum()+1%>">下一页 </a>             
+<a href="selectcity?page=<%= pb.getPageNum()+1%>">下一页 </a>             
      </div>
 
 
@@ -186,6 +186,9 @@ if (request.getAttribute("pageBean")!=null){
   
         <input type="text" id="sreach" > 
         <a  href="" ><input type="button" value="搜索"></a>
+        
+        
+         <a  href="cleansession" ><input type="button" value="清空筛选"></a>
          </div>
     <a onclick="topdisplay()"  >  <img src="pi/you.png" style="display: inline; width: 30px ;height:  60px ;transform:rotate(180deg)" id="yincangsrc"  ></a>
 </div>

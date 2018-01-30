@@ -1,4 +1,4 @@
-<%@page import="Bean.PageBean"%>
+,,<%@page import="Bean.PageBean"%>
 <%@page import="Vo.newHvo"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -127,7 +127,7 @@ if (request.getAttribute("pageBean")!=null){
 	<div align="center" style="background: white;height: 61px;width: 100% ; margin-bottom:1px"></div>
 	<% for (int j = 0 ;j<25;j++){%>
 	<div align="center" style="background: white;height: 30px;width: 100% ; margin-bottom:1px">
-	   <%=j*1%>K -<%=(j+1)*1%>K
+	  <a href="selectcity?salary=<%=j %>">   <%=j*1%>K -<%=(j+1)*1%>K </a>
 	</div> 
    
 <%}%>

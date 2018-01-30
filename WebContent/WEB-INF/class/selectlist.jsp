@@ -1,3 +1,4 @@
+<%@page import="com.attempt.select.vo.SelectVo"%>
 <%@page import="com.attempt.select.vo.PageVo"%>
 <%@page import="Bean.PageBean"%>
 <%@page import="Vo.newHvo"%>
@@ -59,7 +60,7 @@
 	  
 	  
   }
-  
+   
   function topdisplay(){
 	  var topwidth = document.body.clientWidth +"px"
 		if ( document.getElementById("topinside").style.display=="inline")
@@ -82,6 +83,22 @@
   document.getElementById("topsearch").style.left="0px";
   document.getElementById("topsearch").style.top="0px";
 		}
+		
+  }
+  function serch(){
+	  
+	 var sreach=  document.getElementById("sreach").value;
+	  console .log  (sreach);
+	  if (sreach != null )
+{
+		  var  hrefd = " windows.location.href= \"selectcity?position="+sreach +"\"" ;
+		  console .log  (hrefd);
+		  even(hrefd)
+		  }
+	  else {
+		  
+		  windows.location.href="selectcity"
+	  }
 		
   }
   
@@ -128,7 +145,7 @@ if (request.getAttribute("pageBean")!=null){
 	<div align="center" style="background: white;height: 61px;width: 100% ; margin-bottom:1px"></div>
 	<% for (int j = 0 ;j<25;j++){%>
 	<div align="center" style="background: white;height: 30px;width: 100% ; margin-bottom:1px">
-	   <%=j*1%>K -<%=(j+1)*1%>K
+	<a href="selectcity?salary=<%=j %>">   <%=j*1%>K -<%=(j+1)*1%>K </a>
 	</div> 
    
 <%}%>
@@ -185,12 +202,26 @@ if (request.getAttribute("pageBean")!=null){
         <p style=" float:left">目前仅支持一下城市<br><a href="selectcity?city=北京">北京</a>  <a href="selectcity?city=上海">上海</a> <a href="selectcity?city=深圳">深圳</a> <a href="selectcity?city=杭州">杭州</a> <a href="selectcity?city=大连">大连</a>  <a href="selectcity?city=沈阳">沈阳</a>      </p>
   
         <input type="text" id="sreach" > 
-        <a  href="" ><input type="button" value="搜索"></a>
+        <input type="button" value="搜索" onclick="serch()">
         
         
          <a  href="cleansession" ><input type="button" value="清空筛选"></a>
          </div>
     <a onclick="topdisplay()"  >  <img src="pi/you.png" style="display: inline; width: 30px ;height:  60px ;transform:rotate(180deg)" id="yincangsrc"  ></a>
+    
+    <% 
+
+    if (request.getSession().getAttribute("selectinfo")!=null) 
+    {
+    	  SelectVo selectinfo =(SelectVo)request.getSession().getAttribute("selectinfo");
+    	
+    %>
+    <textarea cols="35" rows="2" id="content" name="content">搜索内容！     
+    <%if (selectinfo.getCity()!=null){%><%=selectinfo.getCity() %> <%}%>  
+    <%if (selectinfo.getPosition()!=null){%> <%=selectinfo.getPosition()%> <%}%>
+ <%if (selectinfo.getSalary().isEmpty()){%> <%=selectinfo.getPosition()%> <%}%>
+    </textarea>
+     <%} %>
 </div>
 </body>
 </html>

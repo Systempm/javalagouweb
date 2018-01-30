@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.attempt.select.dao.SelectVx;
+
 import Bean.PageBean;
 import Dao.HDao;
 import Dao.HnewDao;
@@ -22,6 +24,9 @@ import Service.PageService;
 import Vo.HVo;
 import Vo.newHvo;
 import deal.Lagoujsondeal;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import wx.attempt.select.jsonvo.Jsonvo;
 
 @Controller
 public class AController {
@@ -130,5 +135,29 @@ public class AController {
 		            Object a = "aadfsdf";
 		        return a;  
 		    }  
+
+	
+		
+//		 @RequestMapping(value="/wxsnmsl")  
+//		    @ResponseBody  
+//		    public Object  wxsnmsl(HttpSession session){  
+//			 Object a = "123123";
+//			 JSONObject  obj = null;
+//			 Jsonvo jvo= new Jsonvo();
+//			 JSONArray scoreArr = new JSONArray();
+//		// 此处for 循环  打包 result VO	 
+//			 SelectVx sd1 = new SelectVx();
+//			 List<com.attempt.vo.newHvo> nv = sd1.selectCity();
+//			 for (int i = 0 ; i < 11 ; i ++)
+//			 {
+//				 scoreArr .add(nv.get(i)) ; 
+//			 }
+//			 jvo.setResult(scoreArr);
+//		      obj = JSONObject.fromObject(jvo);
+//		     System.out.println(obj.toString());
+//		     
+//		     a=   obj.toString();
+//		        return a;  
+//		    }  
 		
 }
